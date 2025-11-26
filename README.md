@@ -1,12 +1,12 @@
-# 🍰 Chain Crush - Slices Game
+# 🍰 Slices Game
 
 <div align="center">
 
-**A Web3 Puzzle Game Built on Farcaster Mini Apps**
+**A Puzzle Game Built with Phaser 3 and Web3 Integration**
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Built on Arbitrum](https://img.shields.io/badge/Built%20on-Arbitrum-blue)
-![Farcaster Mini App](https://img.shields.io/badge/Farcaster-Mini%20App-purple)
+![Phaser 3](https://img.shields.io/badge/Phaser-3.90.0-green)
+![Next.js](https://img.shields.io/badge/Next.js-14.2.6-black)
 
 [Play Now](#getting-started) | [Documentation](#documentation) | [Features](#features)
 
@@ -16,61 +16,51 @@
 
 ## 🌟 Overview
 
-**Chain Crush** (formerly known as **Slices**) is an addictive puzzle game that combines engaging gameplay mechanics with blockchain technology. Built as a Farcaster Mini App, players solve slice-matching puzzles, compete on leaderboards, and earn real token rewards and NFTs on the Arbitrum blockchain.
+**Slices** is an engaging puzzle game where players strategically place slice pieces onto circular boards arranged in a hexagonal pattern. Fill entire circles to clear them, build combos, and achieve high scores while earning blockchain rewards. Built with Phaser 3 for smooth gameplay and integrated with Web3 wallet connections via Reown AppKit.
 
 ### 🎯 Game Concept
 
-Place colorful slice pieces onto circular boards in a hexagonal pattern. Fill entire circles to clear them and earn points. The game features strategic piece placement, combo multipliers, power-ups, and progressive difficulty scaling as you level up!
+Players place colorful slice pieces from a center display onto six surrounding circular boards. Match slice positions to fill circles completely, clear them for bonus points, and build combo multipliers. The game features progressive difficulty as circles gain more slices with each level.
 
 ---
 
 ## ✨ Features
 
-### 🎮 Game Features
+### 🎮 Core Game Mechanics
 
-- **Hexagonal Board Layout** - 6 playable circles arranged around a central piece display
-- **Strategic Piece Placement** - Match slice positions to fill circles efficiently
-- **Circle Clearing Mechanics** - Fill entire circles to clear them and earn bonus points
-- **Combo System** - Consecutive clears multiply your score
-- **Progressive Difficulty** - Circles gain more slices as you level up (6-12 slices)
+- **Hexagonal Board Layout** - 1 center piece display + 6 surrounding playable circles
+- **Strategic Piece Placement** - Tap surrounding circles to place the center piece
+- **Circle Clearing** - Fill all slices in a circle to clear it and earn bonus points
+- **Combo System** - Consecutive clears multiply your score significantly
+- **Progressive Difficulty** - Circles increase from 6 to 12 slices as you level up
+- **Piece Preview** - Hover over circles to see where your piece will be placed
+- **Smooth Animations** - Beautiful slice movement animations from center to target
+
+### 🎯 Gameplay Features
+
+- **Real-Time Scoring** - Score updates instantly with visual feedback
+- **Level Progression** - Level up based on score milestones (every 1000 points)
 - **Power-Ups System**:
-  - 🔀 **Shuffle** - Reshuffle your current piece
-  - ⏭️ **Skip** - Discard the current piece
+  - 🔀 **Shuffle** - Get a new current piece (1 available)
+  - ⏭️ **Skip** - Discard current piece and get next one (1 available)
   - ✨ **Auto-Fill** - Instantly complete a circle (earned via shop)
-- **Smooth Animations** - Phaser 3-powered visuals with particle effects
-- **Responsive Design** - Optimized for mobile and desktop
+- **Visual Feedback** - Particle effects, score popups, and clearing animations
+- **Game Over Detection** - Automatic game end when no valid moves exist
 
-### 🔗 Blockchain Integration
+### 🔗 Web3 Integration
 
-- **NFT Minting** - Mint unique NFTs based on your achievements
-- **Token Reward System** - Earn tokens through gift boxes and daily challenges
-- **On-Chain Score Tracking** - Blockchain-verified leaderboards
-- **Smart Contract Integration** - Deploy and interact with ERC20 tokens and NFT contracts
-- **Wallet Support** - MetaMask, Coinbase Wallet, Farcaster wallets
+- **Wallet Connection** - Reown AppKit integration for seamless wallet connections
+- **Blockchain Transactions** - Start new games via smart contract transactions
+- **Transaction Status** - Real-time transaction tracking with visual feedback
+- **Score Submission** - Save game scores to backend with wallet address
+- **Gift Box Rewards** - Claim rewards based on gameplay performance
 
 ### 📱 Farcaster Integration
 
-- **Native Mini App** - Built specifically for Farcaster ecosystem
+- **Native Mini App** - Built for Farcaster ecosystem
 - **Social Sharing** - Share achievements and scores on Farcaster
 - **Profile Integration** - Automatic username and profile picture display
-- **Farcaster ID (FID)** tracking for leaderboards and rewards
-
-### 🎁 Reward System
-
-- **Gift Box Rewards** - Daily token rewards based on performance
-- **Score-Based Rewards** - Higher scores unlock better rewards
-- **NFT Minting** - Mint collectible NFTs based on game achievements
-- **Leaderboard Rankings** - Compete globally for top positions
-- **Shop Integration** - Purchase power-ups and boosters with tokens
-
-### 🏆 Leaderboard System
-
-- **Dual Score Tracking**:
-  - **Current Season Score** - Updates with every game
-  - **All-Time High (ATH)** - Your personal best score ever
-- **Real-Time Rankings** - Live leaderboard updates
-- **Farcaster Integration** - Profile pictures and usernames
-- **Global Competition** - Compete with players worldwide
+- **Farcaster ID (FID)** tracking for scores and leaderboards
 
 ---
 
@@ -80,32 +70,95 @@ Place colorful slice pieces onto circular boards in a hexagonal pattern. Fill en
 
 - **Next.js 14** - React framework with App Router
 - **TypeScript** - Type-safe development
-- **Phaser 3** - Game engine for puzzle mechanics and animations
-- **Framer Motion** - UI animations and transitions
+- **Phaser 3** (v3.90.0) - Game engine for puzzle mechanics, animations, and rendering
+- **React Hooks** - State management and lifecycle handling
 - **Tailwind CSS** - Utility-first styling
-- **FontAwesome** - Icon library (Icons used throughout the UI)
+- **FontAwesome** - Icon library for UI elements
 
-### Blockchain
+### Blockchain & Wallet
 
-- **Arbitrum** - Layer 2 Ethereum network
-- **Wagmi v2** - React hooks for Ethereum
-- **Viem** - TypeScript interface for Ethereum
-- **Reown AppKit** - Wallet connection and management
-- **Hardhat** - Smart contract development and deployment
+- **Wagmi v2** - React hooks for Ethereum interactions
+- **Viem** - TypeScript interface for Ethereum operations
+- **Reown AppKit** (v1.8.11) - Wallet connection and management
+  - `@reown/appkit` - Core wallet connection library
+  - `@reown/appkit-adapter-wagmi` - Wagmi adapter for AppKit
+- **Ethers.js** - Additional Ethereum utilities
 
-### Backend
+### Backend Integration
 
-- **MongoDB** - Database for game data and leaderboards
 - **Next.js API Routes** - Serverless API endpoints
-- **Ethers.js** - Ethereum library for smart contract interaction
-- **Upstash Redis** - Caching and rate limiting
+- **Authenticated Fetch** - Secure API communication
+- **MongoDB** - Database for score storage (via API)
 
-### Smart Contracts
+### Farcaster
 
-- **ChainCrush.sol** - Main NFT contract for game achievements
-- **TokenReward.sol** - Token distribution and reward claiming
-- **BoosterShop.sol** - In-game shop for power-ups
-- **MyToken.sol** - ERC20 token implementation
+- **@farcaster/miniapp-sdk** - Farcaster Mini App SDK
+- **@farcaster/miniapp-core** - Core Farcaster functionality
+- **useMiniAppContext** - React hook for Farcaster context
+
+---
+
+## 🎮 How to Play
+
+### Basic Gameplay
+
+1. **Start the Game**
+   - Connect your wallet (MetaMask, Coinbase Wallet, or other supported wallets)
+   - Click "Play Again" to start a new game session
+   - A blockchain transaction is required to begin
+
+2. **Understand the Layout**
+   - **Center Circle**: Displays your current piece (display only, not playable)
+   - **6 Surrounding Circles**: These are your playable game boards
+   - **Next Piece Preview**: Shows the upcoming piece at the bottom
+
+3. **Place Pieces**
+   - Tap any of the 6 surrounding circles to place your piece
+   - The piece will animate from center to the selected circle
+   - Pieces can only be placed on empty slice positions
+   - Invalid placements show error feedback
+
+4. **Clear Circles**
+   - Fill all slice positions in a circle to clear it
+   - Cleared circles reset and become available again
+   - Clearing awards bonus points based on combo multiplier
+
+5. **Build Combos**
+   - Clear multiple circles in quick succession
+   - Each combo multiplies your clearing bonus
+   - Watch for the combo indicator in the UI
+
+6. **Level Up**
+   - Reach score milestones (every 1000 points = new level)
+   - Circles gain 1 additional slice per level (max 12 slices)
+   - Visual feedback shows when difficulty increases
+
+7. **Use Power-Ups**
+   - Click power-up buttons at the bottom when stuck
+   - Shuffle: Get a new piece if current one won't fit
+   - Skip: Discard current piece for the next one
+   - Auto-Fill: Instantly complete any incomplete circle
+
+8. **Game Over**
+   - Game ends automatically when no valid placement exists
+   - Final score is displayed and saved
+   - Share your achievement on Farcaster
+   - Start a new game by clicking "Play Again"
+
+### Scoring System
+
+- **Base Points**: +1 point per slice placed
+- **Clear Bonus**: +10 points per cleared circle
+- **Combo Multiplier**: Clears × combo count × 10 bonus points
+- **Level Scaling**: Difficulty increases with score milestones
+
+### Tips & Strategies
+
+- **Plan Ahead**: Check the next piece to plan your moves
+- **Focus on Combos**: Clearing multiple circles in sequence maximizes points
+- **Manage Space**: Keep circles balanced to maintain placement options
+- **Use Power-Ups Wisely**: Save them for difficult situations
+- **Watch Circle State**: Track which circles are close to clearing
 
 ---
 
@@ -115,15 +168,15 @@ Place colorful slice pieces onto circular boards in a hexagonal pattern. Fill en
 
 - **Node.js** 18.0.0 or later
 - **pnpm** (recommended) or npm
-- **MongoDB** database instance
-- **Arbitrum** wallet with test ETH for gas fees
+- **Web3 Wallet** (MetaMask, Coinbase Wallet, etc.)
+- **Blockchain Network** - Configured for your target network
 
 ### Installation
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/chain-crush.git
-cd chain-crush/arbislice
+git clone <your-repo-url>
+cd arbislice
 ```
 
 2. **Install dependencies**
@@ -137,122 +190,29 @@ npm install
 Create a `.env.local` file with the following variables:
 
 ```bash
-# Database
-MONGODB_URI=mongodb://localhost:27017/chain-crush
+# Wallet Connection (Reown AppKit)
+NEXT_PUBLIC_REOWN_PROJECT_ID=your-reown-project-id
 
-# Authentication
-API_SECRET_KEY=your-super-secret-key-here
-NEXT_PUBLIC_API_SECRET_KEY=your-super-secret-key-here
-
-# Blockchain
-NEXT_PUBLIC_RPC_URL=https://arb1.arbitrum.io/rpc
-SERVER_PRIVATE_KEY=your-private-key-for-contract-interactions
+# API Configuration
+NEXT_PUBLIC_URL=http://localhost:3000
 
 # Contract Addresses (update after deployment)
-NEXT_PUBLIC_CHAINCRUSH_CONTRACT_ADDRESS=0x...
 NEXT_PUBLIC_TOKEN_REWARD_ADDRESS=0x...
-NEXT_PUBLIC_BOOSTER_SHOP_ADDRESS=0x...
-
-# Farcaster
-NEXT_PUBLIC_URL=https://your-app.vercel.app
-
-# Reown (WalletConnect)
-NEXT_PUBLIC_REOWN_PROJECT_ID=your-reown-project-id
 ```
 
-4. **Database Setup**
-Ensure MongoDB is running and the application will automatically create the necessary collections:
-- `gameScores` - Player scores and statistics
-- `giftBoxClaims` - Gift box reward claims
-- `userGiftBoxStats` - User claim statistics
-- `nftMints` - NFT minting records
-- `usedAuthKeys` - Authentication key tracking
+4. **Configure Reown AppKit**
 
-5. **Smart Contract Deployment**
-```bash
-# Navigate to contract directory
-cd contract
+Get your project ID from [Reown Cloud](https://cloud.reown.com) and add it to your environment variables.
 
-# Deploy contracts to Arbitrum
-npx hardhat run deploy.js --network arbitrum
-
-# Deploy token contracts
-npx hardhat run deploy-token.js --network arbitrum
-
-# Deploy booster shop
-npx hardhat run deploy-booster-shop.js --network arbitrum
-
-# Fund the reward contract with tokens
-npx hardhat run fund-reward-contract.js --network arbitrum
-```
-
-6. **Start Development Server**
+5. **Start Development Server**
 ```bash
 pnpm dev
 # or
 npm run dev
 ```
 
-7. **Open your browser**
-Navigate to [http://localhost:3000](http://localhost:3000) to start playing!
-
----
-
-## 🎮 How to Play
-
-### Basic Gameplay
-
-1. **Understand the Layout**
-   - Center circle displays your current piece
-   - 6 surrounding circles are your playable boards
-   - Tap a surrounding circle to place your piece
-
-2. **Place Pieces**
-   - Each piece shows which slice positions it will fill
-   - Pieces can only be placed on empty slice positions
-   - Invalid placements will show error feedback
-
-3. **Clear Circles**
-   - Fill all slices in a circle to clear it
-   - Clearing circles awards bonus points
-   - Cleared circles reset and become available again
-
-4. **Build Combos**
-   - Clearing multiple circles in quick succession creates combos
-   - Combos multiply your score significantly
-   - Watch for the combo indicator!
-
-5. **Level Up**
-   - As your score increases, circles gain more slices
-   - More slices = more challenging gameplay
-   - Difficulty scales from 6 to 12 slices per circle
-
-6. **Game Over**
-   - Game ends when no valid placement exists for the current piece
-   - Your final score is saved and added to the leaderboard
-
-### Power-Ups
-
-- **Shuffle** (↻): Get a new current piece if stuck
-- **Skip** (⏭): Discard current piece and get the next one
-- **Auto-Fill** (✨): Instantly complete any incomplete circle
-
-### Blockchain Features
-
-1. **Connect your wallet** (MetaMask, Coinbase Wallet, or Farcaster)
-2. **Play and achieve high scores** to unlock rewards
-3. **Claim gift box rewards** based on your performance
-4. **Mint NFTs** when you reach achievement milestones
-5. **Share your achievements** on Farcaster for bonus rewards
-6. **Compete on leaderboards** with other players worldwide
-
-### Tips & Strategies
-
-- **Plan Ahead**: Look at the next piece to plan your moves
-- **Focus on Combos**: Clearing multiple circles in sequence maximizes points
-- **Use Power-Ups Wisely**: Save them for difficult situations
-- **Watch Circle State**: Track which circles are close to clearing
-- **Manage Empty Space**: Keep boards balanced to maintain placement options
+6. **Open your browser**
+Navigate to [http://localhost:3000](http://localhost:3000) and start playing!
 
 ---
 
@@ -260,194 +220,203 @@ Navigate to [http://localhost:3000](http://localhost:3000) to start playing!
 
 ```
 arbislice/
-├── app/                    # Next.js App Router
-│   ├── api/               # API routes
-│   │   ├── submit-score/  # Score submission
-│   │   ├── mint-nft/      # NFT minting
-│   │   ├── claim-gift-box/ # Gift box rewards
-│   │   ├── leaderboard/   # Leaderboard data
-│   │   ├── user-stats/    # User statistics
-│   │   └── ...           # Additional endpoints
-│   ├── .well-known/       # Farcaster configuration
-│   └── page.tsx          # Main page
-├── components/            # React components
-│   ├── Home/
-│   │   └── SlicesGame.tsx # Main game component
-│   ├── GiftBox.tsx       # Reward claiming modal
-│   ├── Leaderboard.tsx   # Score leaderboard
-│   ├── Shop.tsx          # Power-up shop
-│   ├── NFTManager.tsx    # NFT management
-│   └── wallet-provider.tsx # Wallet connection
-├── contract/             # Smart contracts
-│   ├── chaincrush.sol   # Main NFT contract
-│   ├── TokenReward.sol  # Token distribution
-│   ├── BoosterShop.sol  # Shop contract
-│   └── deploy.js        # Deployment scripts
-├── docs/                 # Documentation
-│   ├── lib/             # Database utilities
-│   └── cron-setup.md    # Cron job setup
-├── hooks/               # Custom React hooks
-│   └── use-miniapp-context.tsx # Farcaster context
-├── lib/                 # Shared utilities
-│   ├── contracts.ts     # Contract addresses and ABIs
-│   ├── constants.ts     # Game constants
-│   ├── auth.ts          # Authentication utilities
-│   └── leaderboard.ts   # Leaderboard functions
-├── types/               # TypeScript definitions
-├── public/              # Static assets
-└── middleware.ts        # Authentication middleware
+├── components/
+│   └── Home/
+│       └── SlicesGame.tsx      # Main game component (Phaser 3 + React)
+├── hooks/
+│   └── use-miniapp-context.tsx # Farcaster context hook
+├── lib/
+│   ├── contracts.ts            # Contract addresses and ABIs
+│   ├── constants.ts            # Game constants
+│   └── auth.ts                 # Authentication utilities
+└── package.json                # Dependencies including Reown AppKit
 ```
 
 ---
 
 ## 🔧 Configuration
 
+### Wallet Connection Setup
+
+The game uses **Reown AppKit** for wallet connections:
+
+```typescript
+// In your app configuration
+import { createAppKit } from '@reown/appkit/react'
+import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
+
+const wagmiAdapter = new WagmiAdapter({
+  chains: [yourChain],
+  projectId: process.env.NEXT_PUBLIC_REOWN_PROJECT_ID
+})
+
+createAppKit({
+  adapters: [wagmiAdapter],
+  projectId: process.env.NEXT_PUBLIC_REOWN_PROJECT_ID
+})
+```
+
 ### Game Configuration
 
-Edit `lib/constants.ts` to customize game settings:
+The game can be configured by modifying constants in the `SlicesGameScene` class:
 
 ```typescript
-export const GAME_CONFIG = {
-  INITIAL_SLICES: 6,
-  MAX_SLICES: 12,
-  BASE_SCORE_PER_SLICE: 1,
-  CLEAR_BONUS: 10,
-  COMBO_MULTIPLIER: 1.5
-};
+// Circle layout
+const centerX = 200;      // Center circle X position
+const centerY = 250;      // Center circle Y position
+const radius = 100;       // Distance from center to surrounding circles
+
+// Initial settings
+INITIAL_SLICES = 6;       // Starting slices per circle
+MAX_SLICES = 12;          // Maximum slices per circle
+INITIAL_LEVEL = 1;        // Starting level
 ```
 
-### Reward Configuration
+### Blockchain Integration
+
+The game uses Wagmi hooks for blockchain interactions:
 
 ```typescript
-export const REWARD_CONFIG = {
-  GIFT_BOX_CLAIMS_PER_PERIOD: 3,
-  CLAIM_PERIOD_HOURS: 12,
-  MIN_SCORE_FOR_REWARD: 10,
-  NFT_MINT_THRESHOLDS: [100, 500, 1000, 5000]
-};
-```
+import { useAccount, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
 
-### Smart Contract Configuration
+// Wallet connection state
+const { isConnected, address } = useAccount()
 
-Update contract addresses in `lib/contracts.ts` after deployment:
+// Contract writing
+const { writeContract, data: hash, isPending } = useWriteContract()
 
-```typescript
-export const CONTRACT_ADDRESSES = {
-  CHAINCRUSH: '0x...',
-  TOKEN_REWARD: '0x...',
-  BOOSTER_SHOP: '0x...'
-};
+// Transaction confirmation
+const { isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
+  hash,
+})
 ```
 
 ---
 
-## 🚀 Deployment
+## 🎯 Game Mechanics
 
-### Vercel Deployment
+### Circle Layout
 
-1. **Connect your repository** to Vercel
-2. **Set environment variables** in Vercel dashboard
-3. **Configure build settings**:
-   - Build Command: `pnpm build`
-   - Output Directory: `.next`
-4. **Deploy** - Vercel will automatically build and deploy
-
-### Smart Contract Deployment
-
-```bash
-# Deploy to Arbitrum mainnet
-cd contract
-npx hardhat run deploy.js --network arbitrum
-
-# Verify contracts on Arbiscan
-npx hardhat verify --network arbitrum <CONTRACT_ADDRESS>
-```
-
-### Farcaster Mini App Setup
-
-1. **Update Farcaster Config**
-   - Edit `app/.well-known/farcaster.json/route.ts`
-   - Update app metadata, icons, and URLs
-
-2. **Configure Account Association**
-   - Follow Farcaster documentation for account association
-   - Add header, payload, and signature to config
-
-3. **Submit for Review**
-   - Use Farcaster's Mini App submission process
-   - Wait for approval before going live
-
----
-
-## 🔒 Security Features
-
-### Authentication & Security
-
-- **Fused Key Authentication** - Prevents replay attacks
-- **Database Validation** - Additional security layer beyond blockchain
-- **Rate Limiting** - Prevents abuse of reward system
-- **Signature Verification** - Blockchain-level security for token claims
-- **Input Validation** - All API endpoints validate user inputs
-- **Reentrancy Protection** - Smart contracts protected against reentrancy attacks
-
-### Middleware Protection
-
-All POST API routes are protected by authentication middleware:
-- `/api/submit-score`
-- `/api/mint-nft`
-- `/api/claim-gift-box`
-- `/api/purchase-booster`
-- And more...
-
-### Database Security
-
-- **Used Key Tracking** - Prevents key reuse
-- **Expiration Times** - Keys expire after use
-- **Index Optimization** - Fast lookups with MongoDB indexes
-
----
-
-## 📚 Documentation
-
-### Additional Guides
-
-- **[BACKEND_SETUP.md](./BACKEND_SETUP.md)** - MongoDB and backend configuration
-- **[ENV_SETUP.md](./ENV_SETUP.md)** - Environment variable setup
-- **[TOKEN_SETUP.md](./TOKEN_SETUP.md)** - Token contract deployment
-- **[FAUCET_SETUP.md](./FAUCET_SETUP.md)** - Faucet configuration
-- **[SLICES_GAME_GUIDE.md](./SLICES_GAME_GUIDE.md)** - Detailed game mechanics
-- **[contract/README.md](./contract/README.md)** - Smart contract documentation
-
----
-
-## 🎯 Game Mechanics Deep Dive
+- **1 Center Circle**: Display-only, shows current piece
+- **6 Surrounding Circles**: Playable game boards in hexagonal pattern
+- Each circle starts with 6 slices, increases up to 12 with levels
 
 ### Piece Generation
 
-- Pieces are generated to ensure at least one valid placement exists
-- Single-slice pieces are the current implementation
-- Future versions may include multi-slice pieces
+- Pieces are generated as single-slice segments
+- Slice position index (0-5 for 6-slice circles, up to 11 for 12-slice)
+- Pieces guaranteed to have at least one valid placement
 
-### Circle Clearing Logic
+### Placement Logic
 
-1. Check if all slices in a circle are filled
-2. Clear the circle and reset all slices
-3. Award clearing bonus points
-4. Update combo counter
-5. Play clearing animation
+1. Check if circle is locked (cannot place)
+2. Verify slice positions are empty
+3. Validate slice indices are within circle's slice count
+4. Animate piece movement from center to target
+5. Update circle state and check for clears
+
+### Clearing Logic
+
+1. Detect when all slices in a circle are filled
+2. Clear the circle (reset all slices to empty)
+3. Award bonus points with combo multiplier
+4. Play clearing animation
+5. Check for level up
 
 ### Difficulty Scaling
 
-- Starts with 6 slices per circle
-- Increases by 1 slice every level
+- Level increases every 1000 points
+- Each level adds 1 slice to all playable circles
 - Maximum of 12 slices per circle
 - Visual feedback when difficulty increases
 
-### Game Over Conditions
+---
 
-- No valid placement exists for current piece
-- Player manually ends the game
-- All circles are locked (future feature)
+## 🔗 Web3 Integration Details
+
+### Wallet Connection Flow
+
+1. **User Clicks "Play Again"**
+2. **Check Wallet Connection** - `useAccount()` hook
+3. **Initiate Transaction** - `writeContract()` to start game
+4. **Wait for Confirmation** - `useWaitForTransactionReceipt()`
+5. **Start New Game** - Reset game state and begin
+
+### Transaction Handling
+
+```typescript
+// Start new game function
+const startNewGame = async () => {
+  if (!isConnected) return;
+  
+  writeContract({
+    address: CONTRACT_ADDRESSES.TOKEN_REWARD,
+    abi: TOKEN_REWARD_ABI,
+    functionName: 'startGame',
+    args: []
+  });
+};
+
+// Transaction status tracking
+useEffect(() => {
+  if (isPending) {
+    setTransactionStatus('pending');
+  } else if (isConfirmed) {
+    setTransactionStatus('confirmed');
+    // Restart game
+  } else if (error) {
+    setTransactionStatus('error');
+  }
+}, [isPending, isConfirming, isConfirmed, error]);
+```
+
+### Score Submission
+
+Scores are saved via authenticated API endpoint:
+
+```typescript
+const saveGameData = async (finalScore: number, finalLevel: number) => {
+  const gameData = {
+    fid: context.user.fid,           // Farcaster ID
+    username: context.user.username,
+    score: finalScore,
+    level: finalLevel,
+    userAddress: address              // Wallet address
+  };
+  
+  await authenticatedFetch('/api/submit-score', {
+    method: 'POST',
+    body: JSON.stringify(gameData)
+  });
+};
+```
+
+---
+
+## 🎨 Visual Design
+
+### Graphics
+
+- **Canvas-based Textures** - All game graphics created programmatically
+- **Watermelon Slice Theme** - Red slices with black seeds and green rind
+- **Colorful Gradients** - Vibrant slice colors for visual appeal
+- **Dark Theme** - Dark background (#2A2A2A) for contrast
+
+### Animations
+
+- **Slice Movement** - Smooth tweening from center to target circle
+- **Particle Effects** - Burst effects on placement and clearing
+- **Score Popups** - Animated score text that fades upward
+- **Circle Clearing** - Explosion animation with multiple particles
+- **Hover Previews** - Golden preview overlay on valid placements
+
+### UI Elements
+
+- **Score Display** - Top center with animated counting
+- **Level Indicator** - Shows current level
+- **Combo Counter** - Displays combo multiplier when active
+- **Power-Up Buttons** - Bottom of screen with counts
+- **Game Over Screen** - Modern overlay with final score and share button
 
 ---
 
@@ -456,140 +425,105 @@ All POST API routes are protected by authentication middleware:
 ### Common Issues
 
 1. **Game doesn't load**
-   - Check Phaser import and canvas container
-   - Verify Next.js is running correctly
+   - Check Phaser import: `import Phaser from 'phaser'`
+   - Verify canvas container exists: `ref={gameRef}`
    - Check browser console for errors
 
 2. **Wallet connection fails**
+   - Verify Reown AppKit is configured correctly
+   - Check `NEXT_PUBLIC_REOWN_PROJECT_ID` is set
    - Ensure wallet extension is installed
-   - Check network is set to Arbitrum
-   - Verify contract addresses are correct
 
-3. **Score not saving**
-   - Check MongoDB connection
-   - Verify API authentication keys
-   - Check network tab for API errors
+3. **Transaction fails**
+   - Check wallet has sufficient balance for gas
+   - Verify contract address is correct
+   - Check network is properly configured
 
-4. **NFT minting fails**
-   - Ensure wallet has enough ETH for gas
-   - Verify contract addresses are correct
-   - Check contract has minting permissions
+4. **Score not saving**
+   - Verify API endpoint is accessible
+   - Check authentication tokens
+   - Verify MongoDB connection
 
-5. **Gift box not appearing**
-   - Check if claim limit is reached
-   - Verify 12-hour period has passed
-   - Check gift box API endpoint
+5. **No valid moves error**
+   - This is normal game behavior when no placements exist
+   - Use power-ups to continue or start new game
 
 ### Debug Tools
 
-- **Phaser Inspector** - Built-in game debugging
-- **React DevTools** - Component state inspection
-- **Wagmi DevTools** - Blockchain connection debugging
-- **MongoDB Compass** - Database inspection
+- **Browser Console** - Check for JavaScript errors
+- **React DevTools** - Inspect component state
+- **Wagmi DevTools** - Monitor wallet connections
+- **Phaser Debug** - Enable physics debug mode in game config
 
 ---
 
-## 📊 API Endpoints
+## 📚 Key Dependencies
 
-### Game Endpoints
+### Core Game
 
-- `POST /api/submit-score` - Submit game score
-- `GET /api/leaderboard` - Get leaderboard data
-- `GET /api/user-stats` - Get user statistics
-- `GET /api/ath-leaderboard` - Get all-time high leaderboard
+```json
+{
+  "phaser": "^3.90.0",
+  "react": "^18",
+  "next": "14.2.6"
+}
+```
 
-### NFT Endpoints
+### Wallet Integration
 
-- `POST /api/mint-nft` - Mint an NFT
-- `GET /api/nft-supply` - Get NFT supply stats
-- `GET /api/check-nft-owner` - Check NFT ownership
-- `GET /api/get-nft-trait` - Get NFT traits
+```json
+{
+  "@reown/appkit": "^1.8.11",
+  "@reown/appkit-adapter-wagmi": "^1.8.11",
+  "wagmi": "^2.14.12",
+  "viem": "^2.22.22"
+}
+```
 
-### Reward Endpoints
+### Farcaster
 
-- `POST /api/claim-gift-box` - Claim gift box rewards
-- `POST /api/share-reward` - Claim share rewards
-- `POST /api/purchase-booster` - Purchase power-ups
-
-### Stats Endpoints
-
-- `GET /api/players-total` - Get total player count
-- `GET /api/active-players` - Get active player count
-- `GET /api/faucet-stats` - Get faucet statistics
+```json
+{
+  "@farcaster/miniapp-sdk": "^0.1.7",
+  "@farcaster/miniapp-core": "^0.3.6"
+}
+```
 
 ---
 
 ## 🤝 Contributing
 
-1. **Fork the repository**
-2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
-3. **Commit your changes** (`git commit -m 'Add amazing feature'`)
-4. **Push to the branch** (`git push origin feature/amazing-feature`)
-5. **Open a Pull Request**
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ### Development Guidelines
 
 - Follow TypeScript best practices
-- Use FontAwesome icons as specified in user preferences
-- Write descriptive commit messages
-- Test all blockchain interactions on testnet first
+- Use FontAwesome icons for UI elements
+- Maintain Phaser 3 game performance (target 60fps)
+- Test wallet connections on testnet first
 - Update documentation for new features
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**.
 
 ---
 
 ## 🙏 Acknowledgments
 
-- **Arbitrum** - For providing the Layer 2 infrastructure
-- **Farcaster** - For the social protocol and mini app framework
-- **Reown** - For wallet connection infrastructure
-- **Phaser** - For the excellent game engine
-- **OpenZeppelin** - For secure smart contract libraries
-
----
-
-## 📞 Support
-
-For support, please:
-1. Check the [troubleshooting section](#-troubleshooting)
-2. Review the [documentation](#-documentation)
-3. Check existing [GitHub Issues](https://github.com/yourusername/chain-crush/issues)
-4. Create a new issue with detailed information about your problem
-
----
-
-## 🗺️ Roadmap
-
-### Q1 2025
-- [x] Core game mechanics
-- [x] Farcaster Mini App integration
-- [x] Blockchain reward system
-- [x] Leaderboard system
-- [ ] Multi-slice pieces
-- [ ] Tournament mode
-
-### Q2 2025
-- [ ] NFT marketplace integration
-- [ ] Character customization
-- [ ] Advanced power-ups
-- [ ] Seasonal events
-- [ ] Mobile app (iOS/Android)
-
-### Q3 2025
-- [ ] Multiplayer mode
-- [ ] Guild system
-- [ ] Cross-chain support
-- [ ] Creator tools
-- [ ] API for third-party integrations
+- **Phaser** - Excellent game engine for web games
+- **Reown** - Wallet connection infrastructure (formerly WalletConnect)
+- **Wagmi** - React hooks for Ethereum
+- **Farcaster** - Social protocol and mini app framework
 
 ---
 
 **Ready to slice and match your way to victory?** 🍰🎮
 
-Play Chain Crush and compete with players worldwide while earning real rewards on Arbitrum!
-# ArbiSlice
+Play Slices and compete for high scores while earning blockchain rewards!
