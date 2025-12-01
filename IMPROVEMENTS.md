@@ -134,3 +134,4 @@ Potential future improvements:
 - Add dark/light theme toggle component
 - Add keyboard shortcuts system
 
+
