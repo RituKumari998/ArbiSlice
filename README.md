@@ -89,6 +89,9 @@ Players place colorful slice pieces from a center display onto six surrounding c
 - **Next.js API Routes** - Serverless API endpoints
 - **Authenticated Fetch** - Secure API communication
 - **MongoDB** - Database for score storage (via API)
+- **Enhanced Connection Pooling** - Optimized database connections with connection pooling
+- **API Helper Utilities** - Standardized error handling and response formatting
+- **Database Health Checks** - Built-in connection health monitoring
 
 ### Farcaster
 
@@ -196,8 +199,18 @@ NEXT_PUBLIC_REOWN_PROJECT_ID=your-reown-project-id
 # API Configuration
 NEXT_PUBLIC_URL=http://localhost:3000
 
+# MongoDB Configuration
+MONGODB_URI=mongodb://localhost:27017/chaincrush
+# Or use MongoDB Atlas:
+# MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/chaincrush
+
 # Contract Addresses (update after deployment)
 NEXT_PUBLIC_TOKEN_REWARD_ADDRESS=0x...
+
+# Server Configuration (for NFT minting)
+SERVER_PRIVATE_KEY=your_private_key_here
+CHAINCRUSH_NFT_ADDRESS=0x...
+DAILY_MINT_LIMIT=6
 ```
 
 4. **Configure Reown AppKit**
@@ -228,7 +241,12 @@ arbislice/
 ├── lib/
 │   ├── contracts.ts            # Contract addresses and ABIs
 │   ├── constants.ts            # Game constants
-│   └── auth.ts                 # Authentication utilities
+│   ├── auth.ts                 # Authentication utilities
+│   ├── mongodb.ts              # MongoDB connection with connection pooling
+│   ├── database.ts             # Database operations and queries
+│   └── api-helpers.ts          # API response helpers and error handling
+├── app/
+│   └── api/                    # API routes with enhanced error handling
 └── package.json                # Dependencies including Reown AppKit
 ```
 
@@ -443,6 +461,7 @@ const saveGameData = async (finalScore: number, finalLevel: number) => {
    - Verify API endpoint is accessible
    - Check authentication tokens
    - Verify MongoDB connection
+   - Check database health: Use `checkDatabaseHealth()` function
 
 5. **No valid moves error**
    - This is normal game behavior when no placements exist
@@ -480,6 +499,15 @@ const saveGameData = async (finalScore: number, finalLevel: number) => {
 }
 ```
 
+### Backend & Database
+
+```json
+{
+  "mongodb": "^6.x",
+  "ethers": "^6.x"
+}
+```
+
 ### Farcaster
 
 ```json
@@ -488,6 +516,68 @@ const saveGameData = async (finalScore: number, finalLevel: number) => {
   "@farcaster/miniapp-core": "^0.3.6"
 }
 ```
+
+---
+
+## 🔧 Backend Architecture
+
+### MongoDB Connection Management
+
+The backend uses an optimized MongoDB connection setup with:
+
+- **Connection Pooling**: Maintains 2-10 active connections for optimal performance
+- **Automatic Retries**: Retries failed reads/writes automatically
+- **Build-Time Safety**: Gracefully handles missing MongoDB URI during build
+- **Health Monitoring**: Built-in `checkDatabaseHealth()` function for monitoring
+
+**Connection Configuration:**
+```typescript
+// lib/mongodb.ts
+- maxPoolSize: 10 connections
+- minPoolSize: 2 connections
+- maxIdleTimeMS: 30000 (30 seconds)
+- serverSelectionTimeoutMS: 5000
+- socketTimeoutMS: 45000
+- retryWrites: true
+- retryReads: true
+```
+
+### API Helper Utilities
+
+Standardized API response handling via `lib/api-helpers.ts`:
+
+**Available Helpers:**
+- `successResponse(data, status)` - Standardized success responses
+- `errorResponse(error, status, details)` - Error responses
+- `serverErrorResponse(error, details)` - Server errors (500)
+- `validationErrorResponse(message, details)` - Validation errors (400)
+- `notFoundResponse(resource)` - Not found errors (404)
+- `validateRequiredFields(body, fields)` - Request validation
+- `withErrorHandling(handler)` - Async error wrapper
+
+**Example Usage:**
+```typescript
+import { successResponse, validationErrorResponse } from '@/lib/api-helpers';
+
+export async function POST(request: NextRequest) {
+  const validation = validateRequiredFields(body, ['fid', 'score']);
+  if (!validation.isValid) {
+    return validationErrorResponse(
+      `Missing fields: ${validation.missingFields.join(', ')}`
+    );
+  }
+  return successResponse({ score, level });
+}
+```
+
+### Enhanced Error Handling
+
+All API routes now feature:
+- ✅ Consistent error response format
+- ✅ Detailed validation error messages
+- ✅ Proper HTTP status codes
+- ✅ Error logging for debugging
+- ✅ Type-safe error handling
 
 ---
 
@@ -521,6 +611,7 @@ This project is licensed under the **MIT License**.
 - **Reown** - Wallet connection infrastructure (formerly WalletConnect)
 - **Wagmi** - React hooks for Ethereum
 - **Farcaster** - Social protocol and mini app framework
+- **MongoDB** - Database for score storage and game data
 
 ---
 
